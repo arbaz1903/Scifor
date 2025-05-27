@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Todo - Todo Application{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h1 class="card-title text-center mb-4">Update Todo</h1>
+    <form action="/update/{{ todo.SNo }}" method="POST">
+      <div class="mb-3">
+        <label for="todoTitle" class="form-label fw-bold">Todo Title</label>
+        <input type="text" class="form-control" name="todoTitle" id="todoTitle" value="{{ todo.Title }}" required>
+      </div>
+      <div class="mb-3">
+        <label for="todoDescription" class="form-label fw-bold">Description</label>
+        <textarea class="form-control" name="todoDescription" id="todoDescription" rows="3" required>{{ todo.Description }}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Update Todo</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
