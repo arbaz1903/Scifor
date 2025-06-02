@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>{{ warehouse.name }}</h2>
+    </div>
+    <div class="card-body">
+        <p><strong>Location:</strong> {{ warehouse.location }}</p>
+        <p><strong>Capacity:</strong> {{ warehouse.capacity }}</p>
+        <p><strong>Manager:</strong> {{ warehouse.manager.get_full_name|default:warehouse.manager.username }}</p>
+        
+        <a href="{% url 'warehouse_edit' pk=warehouse.pk %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'warehouse_list' %}" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+{% endblock %}

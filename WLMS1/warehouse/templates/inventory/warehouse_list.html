@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Warehouse List</h1>
+    <a href="{% url 'warehouse_create' %}" class="btn btn-primary">Add New Warehouse</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Capacity</th>
+            <th>Manager</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for warehouse in warehouses %}
+        <tr>
+            <td>{{ warehouse.name }}</td>
+            <td>{{ warehouse.location }}</td>
+            <td>{{ warehouse.capacity }}</td>
+            <td>{{ warehouse.manager.get_full_name|default:warehouse.manager.username }}</td>
+            <td>
+                <a href="{% url 'warehouse_detail' pk=warehouse.pk %}" class="btn btn-sm btn-info">View</a>
+                <a href="{% url 'warehouse_edit' pk=warehouse.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

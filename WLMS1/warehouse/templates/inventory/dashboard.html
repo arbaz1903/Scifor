@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1>Warehouse Management Dashboard</h1>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-header">Products</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ products_count }}</h5>
+                        <a href="{% url 'product_list' %}" class="text-white">View all products</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-header">Warehouses</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ warehouses_count }}</h5>
+                        <a href="{% url 'warehouse_list' %}" class="text-white">View all warehouses</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-danger mb-3">
+                    <div class="card-header">Low Stock</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ low_stock_count }}</h5>
+                        <a href="{% url 'inventory_list' %}?low_stock=True" class="text-white">View low stock items</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
